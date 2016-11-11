@@ -31,8 +31,10 @@
 	siteName="www.hd-torrents.org">
 
 	<settings>
-		<cookie_description text="FireFox -> Preferences -> Privacy -> Show Cookies and find the uid and pass cookies. Example: uid=1234; pass=asdf12347asdf13"/>
-		<cookie/>
+		<description text="Paste (Ctrl+V) any HD-Torrents torrent direct download (RSS) link into the text box below to automatically extract passkey."/>
+		<passkey
+			tooltiptext="The passkey in your HD-Torrents RSS feed."
+			pasteRegex="[&amp;]passkey=([\da-fA-F]{32})"/>
 	</settings>
 
 	<servers>
@@ -66,11 +68,9 @@
 				<var name="$torrentId"/>
 				<string value="&amp;f="/>
 				<varenc name="torrentName"/>
-				<string value=".torrent"/>
+				<string value=".torrent?passkey="/>
+				<var name="passkey">
 			</var>
-			<http name="cookie">
-				<var name="cookie"/>
-			</http>
 		</linematched>
 		<ignore>
 			<regex value="/download\.php" expected="false"/>
